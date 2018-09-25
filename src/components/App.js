@@ -27,12 +27,12 @@ export default class App extends React.Component {
     fetchFruits = () => {
     fetch('/api/fruit')
       .then(response => response.json())
-      .then(fruits => this.setState({ fruits }));
+      .then(fruit => this.setState({ fruit }));
     }
 
     handleFilterChange = event => {
       console.log('new filter: ', event.target.value);
-      this.setState({ selectedFilter: event.target.value });
+      this.setState({ currentFilter: event.target.value });
     }
 
     render() {
@@ -40,7 +40,9 @@ export default class App extends React.Component {
         <div>
           <FruitBasket
             filters={this.state.filters}
-            fruits={this.state.fruits} selectedFilter={this.state.selectedFilter} updateFilterCallback={this.handleFilterChange}
+            fruit={this.state.fruit}
+            currentFilter={this.state.currentFilter}
+            updateFilterCallback={this.handleFilterChange}
           />
         </div>
       )
